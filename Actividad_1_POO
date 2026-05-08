@@ -1,0 +1,17 @@
+#Ejercicio $4
+class Familia:     
+    def calcular(self):         
+        self.juan = int(input("Digite la edad de Juan: "))         
+        self.alberto = int((2 * self.juan) / 3)         
+        self.ana = int((4 * self.juan) / 3)         
+        self.mama = self.juan + self.alberto + self.ana      
+        
+    def mostrar(self):         
+        print(f"La edad de Juan es: {self.juan}")         
+        print(f"La edad de Alberto es: {self.alberto}")         
+        print(f"La edad de Ana es: {self.ana}")         
+        print(f"La edad de la mamá es: {self.mama}")  
+        
+f = Familia() 
+f.calcular() 
+f.mostrar() 
