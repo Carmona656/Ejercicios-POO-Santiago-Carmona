@@ -1,39 +1,110 @@
 #Ejercicio_4
-class Familia:     
-    def calcular(self):         
-        self.juan = int(input("Digite la edad de Juan: "))         
-        self.alberto = int((2 * self.juan) / 3)         
-        self.ana = int((4 * self.juan) / 3)         
-        self.mama = self.juan + self.alberto + self.ana      
-        
-    def mostrar(self):         
-        print(f"La edad de Juan es: {self.juan}")         
-        print(f"La edad de Alberto es: {self.alberto}")         
-        print(f"La edad de Ana es: {self.ana}")         
-        print(f"La edad de la mamá es: {self.mama}")  
-        
-f = Familia() 
-f.calcular() 
-f.mostrar() 
 
+class Familia:
+    def calcular(self):
+        self.juan = int(input("Digite la edad de Juan: "))
+        self.alberto = ((2 * self.juan) / 3)
+        self.ana = ((4 * self.juan) / 3)
+        self.mama = self.juan + self.alberto + self.ana
+    
+    def mostrar(self):
+        print(f"La edad de Juan es: {self.juan}")
+        print(f"La edad de Alberto es: {self.alberto}")
+        print(f"La edad de Ana es: {self.ana}")
+        print(f"La edad de la mamá es: {self.mama}")
+        
+f = Familia()
+f.calcular()
+f.mostrar()
+_________________________________________________________________________
 
 #Ejercicio_5
-class Operacion:     
-    def __init__(self):         
-        self.suma = 0         
-        self.x = 0         
-        self.y = 0      
-        
-    def calcular(self):         
-        self.x = int(input("Digite un valor cualquiera: "))         
-        self.suma = self.suma + self.x         
-        self.y = int(input("Digite un valor cualquiera: "))         
-        self.x = self.x + self.y ** 2         
-        self.suma = self.suma + self.x / self.y      
-        
-    def mostrar(self):         
-        print(f"La suma es: {self.suma}")  
-        
-op = Operacion() 
-op.calcular() 
-op.mostrar() 
+
+class Operacion:
+    def __init__(self):
+        self.suma = 0
+        self.x = 0
+        self.y = 0
+
+    def calcular(self):
+        self.x = int(input("Digite un valor cualquiera: "))
+        self.suma = self.suma + self.x
+        self.y = int(input("Digite un valor cualquiera: "))
+        self.x = self.x + self.y ** 2
+        self.suma = self.suma + self.x / self.y
+    
+    def mostrar(self):
+        print(f"La suma es: {self.suma}")
+
+op = Operacion()
+op.calcular()
+op.mostrar()
+__________________________________________________________________________
+
+#Ejercicio_12
+
+class Empleado:
+    def __init__(self):
+        self.horas = 0
+        self.valorHora = 0
+        self.bruto = 0
+        self.retencion = 0
+        self.neto = 0
+    
+    def calcular(self):
+        self.horas = int(input("Digite las horas trabajadas: "))
+        self.valorHora = int(input("Digite el valor por hora: "))
+        self.bruto = self.horas * self.valorHora
+        self.retencion = self.bruto * 0.125
+        self.neto = self.bruto - self.retencion
+    
+    def mostrar(self):
+        print(f"Salario bruto: {self.bruto}")
+        print(f"Retención en la fuente: {self.retencion}")
+        print(f"Salario neto: {self.neto}")
+
+e = Empleado()
+e.calcular()
+e.mostrar()
+___________________________________________________________________________
+
+#Ejercicio_14
+
+class Numero:
+    def __init__(self, valor):
+        self.valor = valor
+    
+    def cuadrado(self):
+        return self.valor ** 2
+    
+    def cubo(self):
+        return self.valor ** 3
+
+numero = float(input("Digite un número: "))
+obj = Numero(numero)
+
+print("Número:", obj.valor)
+print("Cuadrado:", obj.cuadrado())
+print("Cubo:", obj.cubo())
+____________________________________________________________________________
+
+#Ejercicio_17
+
+import math
+class Circulo:
+    
+    def __init__(self, radio):
+        self.radio = radio
+    
+    def area(self):
+        return math.pi * (self.radio ** 2)
+    
+    def longitud(self):
+        return 2 * math.pi * self.radio
+
+radio = float(input("Digite el radio del círculo: "))
+obj = Circulo(radio)
+
+print("Radio:", obj.radio)
+print("Área del círculo:", obj.area())
+print("Longitud de la circunferencia:", obj.longitud())
