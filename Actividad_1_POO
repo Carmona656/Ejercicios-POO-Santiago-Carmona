@@ -1,4 +1,4 @@
-#Ejercicio $4
+#Ejercicio_4
 class Familia:     
     def calcular(self):         
         self.juan = int(input("Digite la edad de Juan: "))         
@@ -15,3 +15,25 @@ class Familia:
 f = Familia() 
 f.calcular() 
 f.mostrar() 
+
+
+#Ejercicio_5
+class Operacion:     
+    def __init__(self):         
+        self.suma = 0         
+        self.x = 0         
+        self.y = 0      
+        
+    def calcular(self):         
+        self.x = int(input("Digite un valor cualquiera: "))         
+        self.suma = self.suma + self.x         
+        self.y = int(input("Digite un valor cualquiera: "))         
+        self.x = self.x + self.y ** 2         
+        self.suma = self.suma + self.x / self.y      
+        
+    def mostrar(self):         
+        print(f"La suma es: {self.suma}")  
+        
+op = Operacion() 
+op.calcular() 
+op.mostrar() 
