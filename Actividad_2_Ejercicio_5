@@ -1,0 +1,62 @@
+public class CuentaBancaria {
+
+    String Nombres;
+    String Apellidos;
+    String NumeroCuenta;
+    enum TipoCuenta {AHORROS, CORRIENTE};
+    TipoCuenta tipoCuenta;
+    float Saldo = 0;
+
+    CuentaBancaria(String Nombres, String Apellidos, String NumeroCuenta, TipoCuenta TipoCuenta) {
+        this.Nombres = Nombres;
+        this.Apellidos = Apellidos;
+        this.NumeroCuenta = NumeroCuenta;
+        this.tipoCuenta = TipoCuenta;
+    }
+
+    void Imprimir() {
+        System.out.println("Nombres del titular: " + Nombres);
+        System.out.println("Apellidos del titular: " + Apellidos);
+        System.out.println("Numero de cuenta: " + NumeroCuenta);
+        System.out.println("Tipo de cuenta: " + tipoCuenta);
+        System.out.println("Saldo: " + Saldo);
+    }
+
+    void ConsultarSaldo() {
+        System.out.printf("El saldo actual es:" + Saldo);
+    }
+
+    boolean Consignar(int valor) {
+        if (valor > 0) {
+            Saldo = Saldo + valor;
+            System.out.println("Se ha consignado $" + valor + " en la cuenta. El nuevo saldo es $" + Saldo);
+            return true;
+        } else {
+            System.out.println("El valor a consignar debe ser mayor que cero.");
+            return false;
+            
+        }
+    }
+
+    boolean Retirar(int valor) {
+        if ((valor > 0) && (valor <= Saldo)) {
+            Saldo = Saldo - valor;
+            System.out.println("Se ha retirado $" + valor + " en la cuenta. El nuevo saldo es $" + Saldo);
+            return true;
+            
+        } else {
+            System.out.println("El valor a retirar debe ser menor que el saldo actual.");
+            return false;
+            
+        }
+    }
+
+    public static void main(String args[]) {
+        CuentaBancaria cuenta = new CuentaBancaria("Pedro", "Perez", "123456789", TipoCuenta.AHORROS);
+        cuenta.Imprimir();
+        cuenta.Consignar(200000);
+        cuenta.Consignar(300000);
+        cuenta.Retirar(400000);
+        
+    }
+}
