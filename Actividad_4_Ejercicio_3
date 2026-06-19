@@ -1,0 +1,135 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class PrincipalGUI extends JFrame {
+
+    private JTextField txtNumero;
+    private JLabel lblLogResultado;
+    private JLabel lblRaizResultado;
+    private JButton btnCalcular;
+    private JButton btnLimpiar;
+
+    public PrincipalGUI() {
+        setTitle("Mi Calculadora de CálculosNuméricos");
+        setSize(450, 350);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setLayout(new BorderLayout(10, 10));
+
+        JPanel panelNorte = new JPanel();
+        panelNorte.setLayout(new BoxLayout(panelNorte, BoxLayout.Y_AXIS));
+        
+        JLabel lblTitulo = new JLabel("CÁLCULOS NUMÉRICOS", JLabel.CENTER);
+        lblTitulo.setFont(new Font("Arial", Font.BOLD, 22));
+        lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        JLabel lblSubtitulo = new JLabel("PROYECTO DE CLASE", JLabel.CENTER);
+        lblSubtitulo.setFont(new Font("Arial", Font.PLAIN, 14));
+        lblSubtitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        panelNorte.add(Box.createVerticalStrut(10));
+        panelNorte.add(lblTitulo);
+        panelNorte.add(lblSubtitulo);
+        panelNorte.add(Box.createVerticalStrut(15));
+        add(panelNorte, BorderLayout.NORTH);
+
+        JPanel panelCentral = new JPanel();
+        panelCentral.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+
+        JLabel lblInstruccion = new JLabel("INGRESA TU NÚMERO (double): ");
+        lblInstruccion.setFont(new Font("Arial", Font.BOLD, 14));
+        
+        txtNumero = new JTextField(15);
+        txtNumero.setFont(new Font("Arial", Font.PLAIN, 14));
+
+        btnCalcular = new JButton("CALCULAR");
+        btnLimpiar = new JButton("LIMPIAR");
+
+        panelCentral.add(lblInstruccion);
+        panelCentral.add(txtNumero);
+        panelCentral.add(btnCalcular);
+        panelCentral.add(btnLimpiar);
+        add(panelCentral, BorderLayout.CENTER);
+
+        JPanel panelSur = new JPanel();
+        panelSur.setBorder(BorderFactory.createTitledBorder(" RESULTADOS "));
+        panelSur.setLayout(new GridLayout(2, 1, 5, 5));
+
+        lblLogResultado = new JLabel("Logaritmo Neperiano: -", JLabel.CENTER);
+        lblLogResultado.setFont(new Font("Arial", Font.BOLD, 16));
+        lblLogResultado.setForeground(new Color(34, 139, 34));
+
+        lblRaizResultado = new JLabel("Raíz Cuadrada: -", JLabel.CENTER);
+        lblRaizResultado.setFont(new Font("Arial", Font.BOLD, 16));
+        lblRaizResultado.setForeground(new Color(34, 139, 34));
+
+        panelSur.add(lblLogResultado);
+        panelSur.add(lblRaizResultado);
+        add(panelSur, BorderLayout.SOUTH);
+
+        btnCalcular.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                procesarCalculo();
+            }
+        });
+
+        btnLimpiar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtNumero.setText("");
+                lblLogResultado.setText("Logaritmo Neperiano: -");
+                lblRaizResultado.setText("Raíz Cuadrada: -");
+                txtNumero.requestFocus();
+            }
+        });
+    }
+
+    private void procesarCalculo() {
+        try {
+            double numero = Double.parseDouble(txtNumero.getText().trim());
+
+            double resLog = CalculosNumericos.logaritmoNeperiano(numero);
+            double resRaiz = CalculosNumericos.raizCuadrada(numero);
+
+            lblLogResultado.setText(String.format("Logaritmo Neperiano: %.4f", resLog));
+            lblRaizResultado.setText(String.format("Raíz Cuadrada: %.4f", resRaiz));
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, 
+                "Por favor, ingresa un número decimal válido.", 
+                "Error de Formato", JOptionPane.ERROR_MESSAGE);
+        } catch (ArithmeticException ex) {
+            JOptionPane.showMessageDialog(this, 
+                ex.getMessage(), 
+                "Error Aritmético", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new PrincipalGUI().setVisible(true);
+            }
+        });
+    }
+}
+class CalculosNumericos {
+
+    public static double logaritmoNeperiano(double valor) {
+        if (valor <= 0) {
+            throw new ArithmeticException("El valor debe ser mayor que cero para el logaritmo.");
+        }
+        return Math.log(valor);
+    }
+
+    public static double raizCuadrada(double valor) {
+        if (valor <= 0) {
+            throw new ArithmeticException("El valor debe ser positivo para la raíz cuadrada.");
+        }
+        return Math.sqrt(valor);
+    }
+}
