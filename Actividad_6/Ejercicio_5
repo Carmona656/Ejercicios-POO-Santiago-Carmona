@@ -1,0 +1,101 @@
+abstract class Animal {
+    protected String sonido = "";
+    protected String alimentos = "";
+    protected String habitat = "";
+    protected String nombreCientifico = "";
+
+    public abstract String getNombreCientifico();
+    public abstract String getSonido();
+    public abstract String getAlimentos();
+    public abstract String getHabitat();
+}
+
+abstract class Canido extends Animal {}
+
+abstract class Felino extends Animal {}
+
+class Gato extends Felino {
+    public String getNombreCientifico() {
+        return "Felis silvestris catus";
+    }
+
+    public String getSonido() {
+        return "Maullido";
+    }
+
+    public String getAlimentos() {
+        return "Ratones";
+    }
+
+    public String getHabitat() {
+        return "Doméstico";
+    }
+}
+
+class Perro extends Canido {
+    public String getNombreCientifico() {
+        return "Canis lupus familiaris";
+    }
+
+    public String getSonido() {
+        return "Ladrido";
+    }
+
+    public String getAlimentos() {
+        return "Carnívoro";
+    }
+
+    public String getHabitat() {
+        return "Doméstico";
+    }
+}
+
+class Lobo extends Canido {
+    public String getNombreCientifico() {
+        return "Canis lupus";
+    }
+
+    public String getSonido() {
+        return "Aullido";
+    }
+
+    public String getAlimentos() {
+        return "Carnívoro";
+    }
+
+    public String getHabitat() {
+        return "Bosque";
+    }
+}
+
+class Leon extends Felino {
+    public String getNombreCientifico() {
+        return "Panthera leo";
+    }
+
+    public String getSonido() {
+        return "Rugido";
+    }
+
+    public String getAlimentos() {
+        return "Carnívoro";
+    }
+
+    public String getHabitat() {
+        return "Praderas";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal[] animales = { new Gato(), new Perro(), new Lobo(), new Leon() };
+
+        for (Animal animal : animales) {
+            System.out.println(animal.getNombreCientifico());
+            System.out.println("Sonido: " + animal.getSonido());
+            System.out.println("Alimentos: " + animal.getAlimentos());
+            System.out.println("Hábitat: " + animal.getHabitat());
+            System.out.println();
+        }
+    }
+}
