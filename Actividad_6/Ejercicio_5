@@ -28,7 +28,7 @@ class Gato extends Felino {
     }
 
     public String getHabitat() {
-        return "Doméstico";
+        return "Domestico";
     }
 }
 
@@ -42,11 +42,11 @@ class Perro extends Canido {
     }
 
     public String getAlimentos() {
-        return "Carnívoro";
+        return "Carnivoro";
     }
 
     public String getHabitat() {
-        return "Doméstico";
+        return "Domestico";
     }
 }
 
@@ -60,7 +60,7 @@ class Lobo extends Canido {
     }
 
     public String getAlimentos() {
-        return "Carnívoro";
+        return "Carnivoro";
     }
 
     public String getHabitat() {
@@ -78,7 +78,7 @@ class Leon extends Felino {
     }
 
     public String getAlimentos() {
-        return "Carnívoro";
+        return "Carnivoro";
     }
 
     public String getHabitat() {
@@ -94,7 +94,7 @@ public class Main {
             System.out.println(animal.getNombreCientifico());
             System.out.println("Sonido: " + animal.getSonido());
             System.out.println("Alimentos: " + animal.getAlimentos());
-            System.out.println("Hábitat: " + animal.getHabitat());
+            System.out.println("Habitat: " + animal.getHabitat());
             System.out.println();
         }
     }
