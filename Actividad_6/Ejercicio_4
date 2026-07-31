@@ -1,0 +1,29 @@
+class Profesor {
+    protected void imprimir() {
+        System.out.println("Es un profesor.");
+    }
+}
+
+class ProfesorTitular extends Profesor {
+    protected int años;
+
+    public ProfesorTitular() {
+        this.años = 0;
+    }
+
+    @Override
+    protected void imprimir() {
+        System.out.println("Es un profesor titular.");
+    }
+
+    protected void imprimirAños() {
+        System.out.println("Años = " + this.años);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ProfesorTitular profesor1 = new ProfesorTitular();
+        profesor1.imprimirAños();
+    }
+}
